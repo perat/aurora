@@ -27,3 +27,6 @@ hs_err_pid*
 
 # Python
 venv/
+
+# Local files
+secrets
