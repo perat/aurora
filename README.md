@@ -5,9 +5,9 @@ sent to telegram chat.
 
 1. setup python
    - Ensure Python 3 is installed on your system
-   - Create a virtual environment: `python -m venv venv`
-   - Start the virtual environment: `venv/Scripts/activate`
-   - Check install tooling is up to date `python -m pip install -U pip wheel setuptools`
+   - Create a virtual environment: `python3 -m venv venv`
+   - Start the virtual environment: `source venv/bin/activate`
+   - Check install tooling is up to date `python3 -m pip install -U pip wheel setuptools`
    - Install the requirements `pip install -r requirements.txt`
 2. start job:
    python start_observer.py <mode> <freq_sec> <bot_token> <bot_chat_id>
