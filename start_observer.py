@@ -5,7 +5,7 @@ from client.telegram_bot import telegram_bot_sendtext
 import time
 import sys
 
-if len(sys.argv)!=5:
+if len(sys.argv) != 5:
     print("Usage: python start_observer.py <mode> <freq_sec> <bot_token> <bot_chat_id>")
     sys.exit(2)
 bot_token = sys.argv[4]
@@ -13,16 +13,19 @@ bot_chatID = sys.argv[3]
 mode = sys.argv[1]
 freq = int(sys.argv[2])
 
-watcher = MagWatcher(freq = freq)
+watcher = MagWatcher(freq=freq)
 calculator = KIndexCalculator()
 watcher.service()
-prev_q=0
+prev_q = 0
 while True:
     try:
-        q=calculator.get_q(mode, watcher.get_data())
-        if prev_q!=q and q>2:
-            test = telegram_bot_sendtext(bot_token, bot_chatID, "probability for aurora: "+ get_probability(q)+"(q="+str(q)+")")
-        prev_q=q
+        q = calculator.get_q(mode, watcher.get_data())
+        if prev_q != q and q > 2:
+            test = telegram_bot_sendtext(
+                bot_token,
+                bot_chatID,
+                "probability for aurora: " + get_probability(q)+"(q="+str(q)+")")
+        prev_q = q
         time.sleep(60)
     except Exception as e:
         print(e)
